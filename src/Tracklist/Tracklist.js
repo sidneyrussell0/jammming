@@ -1,44 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import "./Tracklist.module.css";
+import Track from "../Track/Track";
 
-const TrackDataArray = [{
-    song: "Never With You Again",
-    artist: "Chri$tian Gate$",
-    album: "Single"
-  },
-  {
-    song: "I'm Not A Vampire",
-    artist: "Falling In Reverse",
-    album: "The Drug In Me Is You"  
-  },
-  {
-    song: "Gasoline",
-    artist: "I Prevail",
-    album: "TRAUMA"
-  }];
-
-
-function Tracklist() {
-const [searchResults, setSearchResults] = useState([]);
-    const search = () => {
-        const track = TrackDataArray.map((track) => {
-          return track;
-        });
-        setSearchResults(track);
-      }
-
-    return (
-        <div>
-            <ul>
-              {searchResults.map((track) => (
-                <li key={track.id}>
-                  <strong>Song:</strong> {track.song} <br />
-                  <strong>Artist:</strong> {track.artist} <br />
-                  <strong>Album:</strong> {track.album}
-                </li>
-              ))}
-            </ul>
-        </div>
-    );
+function Tracklist(props) {
+  return (
+    <div className="Tracklist">
+      {props.tracks.map((track) => (
+        <Track 
+          key={track.id}
+          track={track}
+          onAdd={props.onAdd}
+          onRemove={props.onRemove}
+          isRemoval={props.isRemoval}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Tracklist;

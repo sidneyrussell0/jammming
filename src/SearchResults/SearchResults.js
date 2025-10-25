@@ -8,9 +8,9 @@ function SearchResults(props) {
     return (
         <div className="SearchResults">
             <h2>Results</h2>
-            <Tracklist tracks={props.SearchResults} onAdd={props.onAdd}/>
+            <Tracklist tracks={props.searchResults} onAdd={props.onAdd} />
         </div>
     );
-};
+}
 
 export default SearchResults;

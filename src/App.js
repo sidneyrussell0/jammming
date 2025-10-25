@@ -34,7 +34,11 @@ function App() {
   }, []);
 
   const savePlaylist = useCallback(() => {
-    Spotify.savePlaylist(playlistName, playlistTracks);
+    const trackUris = playlistTracks.map((track) => track.uri);
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setPlaylistName("New Playlist");
+      setPlaylistTracks([]);
+    });
   }, [playlistName, playlistTracks]);
 
   return (

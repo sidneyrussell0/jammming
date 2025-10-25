@@ -10,23 +10,28 @@ function Playlist(props) {
         [props.onNameChange]
     );
 
+    const handleSave = useCallback(() => {
+        props.onSave(); //call the savePlaylist() from App.js
+    }, [props.onSave]);
 
 
     return (
         <div className="Playlist">
             <form>
-            <input 
-                type="text"
-                onChange={handleNameChange} 
-                defaultValue={"New Playlist"} />
+                <input 
+                    type="text"
+                    onChange={handleNameChange} 
+                    defaultValue={props.playlistName || "New Playlist"} 
+                />
             </form>
-            <Tracklist tracks={props.playlistTracks} />
-            <button>
-                Save To Spotify
-            </button>
-        
+            <Tracklist 
+                tracks={props.playlistTracks}
+                onRemove={props.onRemove}
+                isRemoval={true} 
+            />
+            <button onClick={handleSave}> Save To Spotify </button>
         </div>
     );
-};
+}
 
 export default Playlist;

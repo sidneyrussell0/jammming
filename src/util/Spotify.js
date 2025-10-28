@@ -1,5 +1,5 @@
 const clientId = 'd21d75df48fa44789360a68f8ff275b6'; // Insert client ID here.
-const redirectUri = 'https://localhost:3000/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
+const redirectUri = 'https://violety-hee-inaptly.ngrok-free.dev/'; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 let accessToken;
 
 const Spotify = {
@@ -36,6 +36,7 @@ const Spotify = {
 
   async search(term) {
     const token = Spotify.getAccessToken();
+    console.log("Access Token:", token);
     const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
       headers: { Authorization: `Bearer ${token}` }
     });

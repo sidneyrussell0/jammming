@@ -6,13 +6,10 @@
   padding: 1rem;
 }
 
-.App h1 {
-  color: #3a00ad;
-  font-size: 2.5rem;
-}
-
-.App span {
-  color: #191414; /* For Ja<span>mmm</span>ing logo effect */
+.App-logo {
+  height: 80px;
+  pointer-events: none;
+  margin-bottom: 1rem;
 }
 
 .App-playlist {

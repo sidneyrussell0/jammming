@@ -51,7 +51,14 @@ function App() {
 
   return (
     <div>
-      <h1>Ja<span>mmm</span>ing</h1>
+      <header className="App-header">
+        <img 
+          src={`${process.env.PUBLIC_URL}/favicon.ico`} 
+          alt="Jammming Logo" 
+          className="App-logo" 
+        />
+      </header>
+      
       <div className="App">
         <SearchBar onSearch={search} />
         <div className="App-playlist">

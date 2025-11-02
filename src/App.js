@@ -18,7 +18,9 @@ function App() {
   }, []);
 
   const search = useCallback((term) => {
-    Spotify.search(term).then(setSearchResults);
+    Spotify.search(term)
+    .then(setSearchResults)
+    .catch((err) => console.error("Search failed:", err));
   }, []);
 
   const addTrack = useCallback((track) => {

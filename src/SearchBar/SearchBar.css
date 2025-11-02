@@ -15,7 +15,7 @@
   
   .SearchButton {
     padding: 0.5rem 1rem;
-    background-color: #1db954;
+    background-color: #3a00ad;
     color: white;
     border: none;
     border-radius: 3px;
@@ -24,6 +24,6 @@
   }
   
   .SearchButton:hover {
-    background-color: #1ed760;
+    background-color: #7a37ff;
   }
   

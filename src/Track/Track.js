@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import "./Track.css";
 
-function Track(props) {
+function Track({ track, onAdd, onRemove, isRemoval }) {
     const addTrack = useCallback(() => {
             onAdd(track);
         }, [onAdd, track]);
@@ -15,7 +15,7 @@ function Track(props) {
 //button (add to css)
 
     const renderAction = () => {
-        if (props.isRemoval) {
+        if (isRemoval) {
             return <button className="Track-action" onClick={removeTrack}>-</button>;
         }
         return <button className="Track-action" onClick={addTrack}>+</button>;
@@ -24,8 +24,10 @@ function Track(props) {
     return (
         <div className="Track">
             <div className="Track-information">
-                <h3>{props.track.name}</h3>
-                <p>{props.track.artist} | {props.track.album}</p>
+                <h3 title={track.name}>{track.name}</h3>
+                <p title={`${track.artist} | ${track.album}`}>
+                    {track.artist} | {track.album}
+                </p>
             </div>
             {renderAction()}
         </div>

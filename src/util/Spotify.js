@@ -98,7 +98,7 @@ const Spotify = {
     await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
       headers,
       method: 'POST',
-      body: JSON.stringigy({ uris: trackUris }),
+      body: JSON.stringify({ uris: trackUris }),
     });
 
     return playlist.id;

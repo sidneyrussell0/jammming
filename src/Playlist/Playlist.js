@@ -17,19 +17,17 @@ function Playlist(props) {
 
     return (
         <div className="Playlist">
-            <form>
-                <input 
-                    type="text"
-                    onChange={handleNameChange} 
-                    defaultValue={props.playlistName || "New Playlist"} 
-                />
-            </form>
+            <input 
+                type="text"
+                onChange={handleNameChange} 
+                defaultValue={props.playlistName || "New Playlist"} 
+            />
             <Tracklist 
                 tracks={props.playlistTracks}
                 onRemove={props.onRemove}
                 isRemoval={true} 
             />
-            <button onClick={handleSave}> Save To Spotify </button>
+            <button type="button" onClick={handleSave}> Save To Spotify </button>
         </div>
     );
 }

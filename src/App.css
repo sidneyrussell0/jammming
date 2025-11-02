@@ -15,3 +15,9 @@
   color: #191414; /* For Ja<span>mmm</span>ing logo effect */
 }
 
+.App-playlist {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+

@@ -13,6 +13,7 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   useEffect(() => {
+    console.log("Getting access token");
     Spotify.getAccessToken();
   }, []);
 

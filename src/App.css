@@ -6,10 +6,17 @@
   padding: 1rem;
 }
 
+.App-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  margin-bottom: 2rem;
+}
+
 .App-logo {
-  height: 80px;
+  height: 150px;
   pointer-events: none;
-  margin-bottom: 1rem;
 }
 
 .App-playlist {

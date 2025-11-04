@@ -16,7 +16,7 @@ const Spotify = {
       window.history.replaceState({}, document.title, window.location.pathname);
       return accessToken;
     } else {
-      const scope = 'playlist-modify-public playlist-modify-private';
+      const scope = 'playlist-modify-public playlist-modify-private user-read-email';
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=${encodeURIComponent(scope)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
       console.log("Redirecting to Spotify Auth:", accessUrl);
       window.location = accessUrl;

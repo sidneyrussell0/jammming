@@ -10,9 +10,9 @@ function Tracklist({ tracks = [], onAdd, onRemove, isRemoval }) {
           <Track 
             key={track.id}
             track={track}
-            onAdd={props.onAdd}
-            onRemove={props.onRemove}
-            isRemoval={props.isRemoval}
+            onAdd={onAdd}
+            onRemove={onRemove}
+            isRemoval={isRemoval}
           />
         ))
       ) : (

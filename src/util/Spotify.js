@@ -91,7 +91,7 @@ const Spotify = {
     const playlist = await playlistResponse.json();
 
     //Add tracks to playlist
-    const addTracksResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/traacks`, {
+    const addTracksResponse = await fetch(`https://api.spotify.com/v1/playlists/${playlist.id}/tracks`, {
       headers,
       method: 'POST',
       body: JSON.stringify({ uris: tracks.map(track => track.uri) }),

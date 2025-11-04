@@ -8,7 +8,6 @@ import Spotify from "./util/Spotify";
 
 
 function App() {
-  console.log('Spotify Client ID:', process.env.REACT_APP_SPOTIFY_CLIENT_ID=d21d75df48fa44789360a68f8ff275b6)
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);

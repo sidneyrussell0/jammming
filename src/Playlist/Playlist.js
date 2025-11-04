@@ -2,17 +2,17 @@ import React, { useCallback } from "react";
 import "./Playlist.css"
 import Tracklist from "../Tracklist/Tracklist";
 
-function Playlist(props) {
+function Playlist({ playlistName, playlistTracks, onNameChange, onRemove, onSave }) {
     const handleNameChange = useCallback(
         (event) => {
-            props.onNameChange(event.target.value);
+            onNameChange(event.target.value);
         },
-        [props.onNameChange]
+        [onNameChange]
     );
 
     const handleSave = useCallback(() => {
-        props.onSave(); //call the savePlaylist() from App.js
-    }, [props.onSave]);
+        onSave(); //call the savePlaylist() from App.js
+    }, [onSave]);
 
 
     return (
@@ -20,11 +20,11 @@ function Playlist(props) {
             <input 
                 type="text"
                 onChange={handleNameChange} 
-                defaultValue={props.playlistName || "New Playlist"} 
+                defaultValue={playlistName || "New Playlist"} 
             />
             <Tracklist 
-                tracks={props.playlistTracks}
-                onRemove={props.onRemove}
+                tracks={playlistTracks}
+                onRemove={onRemove}
                 isRemoval={true} 
             />
             <button type="button" onClick={handleSave}> Save To Spotify </button>

@@ -57,22 +57,6 @@ const Spotify = {
     }));
   },
 
-  //Do I need this?
-  async getTopTracks() {
-    const response = await Spotify.fetchWebApi(
-      'v1/me/top/tracks?time_range=long_term&limit=5',
-      'GET'
-    );
-    if (!response.items) return [];
-    return response.items.map(track => ({
-      id: track.id,
-      name: track.name,
-      artist: track.artists.map(artist => artist.name).join(', '),
-      album: track.album.name,
-      uri: track.uri,
-    }));
-  },  
-
   async savePlaylist(name, tracks) {
     if (!name || !tracks.length) return;
     const accessToken = Spotify.getAccessToken();

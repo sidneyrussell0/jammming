@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import "./SearchBar.css";
 
-function SearchBar(props) {
+function SearchBar({ onSearch }) {
     const [term, setTerm] = useState("");
 
     const handleTermChange = useCallback((event) => {
@@ -9,8 +9,8 @@ function SearchBar(props) {
     }, []);
 
     const search = useCallback(() => {
-        props.onSearch(term); //triggers search from App.js
-    }, [props.onSearch, term]);
+        onSearch(term); //triggers search from App.js
+    }, [onSearch, term]);
 
     //Allows users to simply press "ENTER" to search
     const handleKeyPress = useCallback((event) => {

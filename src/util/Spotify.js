@@ -26,6 +26,12 @@ const Spotify = {
   async getAccessToken() {
     if (accessToken) return accessToken;
 
+    const storedToken = localStorage.getItem('spotify_access_token');
+    if (storedToken) {
+      accessToken = storedToken;
+      return accessToken;
+    }
+
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
 
@@ -34,8 +40,8 @@ const Spotify = {
       const codeChallenge = await generateCodeChallenge(codeVerifier);
       localStorage.setItem('spotify_code_verifier', codeVerifier);
 
-      const scope = '';
-      const authUrl = '';
+      const scope = 'playlist-modify-public playlist-modify-private user-read-email';
+      const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
 
       console.log("Redirecting to Spotify Auth:", authUrl);
       window.location = authUrl;
@@ -61,7 +67,10 @@ const Spotify = {
     const data = await response.json();
     if (data.access_token) {
       accessToken = data.access_token;
-      window.history.replaceState({}, document.title, '/'); // clears ?code= from URL
+      //Save token into localStorage
+      localStorage.setItem('spotify_access_token', accessToken);
+      //Clean up URL
+      window.history.replaceState({}, document.title, '/');
       return accessToken;
     } else {
       console.error("Failed to get token:", data);

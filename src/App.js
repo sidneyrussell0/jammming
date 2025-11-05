@@ -11,10 +11,21 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("New Playlist");
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [tokenReady, setTokenReady] = useState(false);
 
   useEffect(() => {
-    console.log("Getting access token");
-    Spotify.getAccessToken();
+    async function initSpotify() {
+      console.log("Getting access token...");
+      try {
+        await Spotify.getAccessToken();
+        console.log("Access token acquired!");
+        setTokenReady(true);
+      } catch (err) {
+        console.error("error getting access token:", err);
+      }
+    }
+    
+    initSpotify();
   }, []);
 
   const search = useCallback((term) => {
@@ -48,6 +59,10 @@ function App() {
       setPlaylistTracks([]);
     });
   }, [playlistName, playlistTracks]);
+
+  if (!tokenReady) {
+    return <div>Loading Spotify authorization...</div>;
+  }
 
   return (
     <div>

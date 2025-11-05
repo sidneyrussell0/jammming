@@ -11,11 +11,10 @@
   justify-content: center;
   align-items: center;
   min-height: 150px;
-  margin-bottom: 2rem;
 }
 
 .App-logo {
-  height: 150px;
+  height: 175px;
   pointer-events: none;
 }
 

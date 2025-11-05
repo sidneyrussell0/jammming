@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Jammming
+Jammming is a React web application that lets users search the Spotify library for songs, create custom playlists, and save them directly to their personal Spotify account.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Built with **React**, **Spotify Web API**, and **PKCE Authorization Flow** for secure OAuth authentication.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
+- **Search Spotify** by song, artist, or album  
+- **Add / remove tracks** to a custom playlist  
+- **Save playlists** directly to your Spotify account  
+- **PKCE Authorization Flow** for secure login  
+- **Responsive design** styled with CSS Flexbox 
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
+- **React (Create React App)**
+- **Spotify Web API**
+- **JavaScript (ES6+)**
+- **CSS (custom styles)**
+- **ngrok** (for temporary HTTPS redirect URI during local development)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Setup & Installation
+### 1. Clone this repository
+`bash`
+git clone https://github.com/sidneyrussell0/jammming.git
+cd jammming
+### 2. Install dependencies
+`npm install`
+### 3. Create your Spotify app
+1. Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+2. Create a new app
+3. Add your Redirect URI (must match your app's redirect):
+https://<your-ngrok-subdomain>.ngrok-free.dev
+4. Copy your Client ID
+### 4. Add environment variables
+Create a `.env` file in the root of your project:
+REACT_APP_SPOTIFY_CLIENT_ID=your_client_id_here
+REACT_APP_REDIRECT_URI=https://<your-ngrok-subdomain>.ngrok-free.dev
+### 5. Start the app
+`npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Your app should open at http://localhost:3000
+The first time you search, you'll be redirected to Spotify to log in and approve the app.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How It Works
+### 1. Authorization:
+Jammming uses the Spotify PKCE flow to securely authenticate users.
+### 2. Search:
+The app fetches tracks via https://api.spotify.com/v1/search.
+### 3. Playlist Management:
+Users build a custom list of tracks in React state.
+### 4. Save to Spotify:
+The playlist is created via POST /v1/users/{user_id}/playlists and tracks are added with POST /v1/playlists/{playlist_id}/tracks.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Future Improvements
+- Add preview audio clips for tracks
+- Display user’s Spotify username
+- Refresh tokens automatically when they expire
+- Add dark/light mode toggle
+- Improve mobile responsiveness
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Preview
+![Jammming Screenshot](/Jammming_Screenshot.jpg)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Author
+Sidney Russell
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Frontend Developer
 
-## Learn More
+[GitHub](https://github.com/sidneyrussell0)
+ • [LinkedIn](https://www.linkedin.com/in/sidney-russell-0445422b3)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

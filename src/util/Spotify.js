@@ -1,4 +1,4 @@
-const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID || 'd21d75df48fa44789360a68f8ff275b6';
+const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectUri = 'https://violety-hee-inaptly.ngrok-free.dev';
 const scope = 'playlist-modify-public playlist-modify-private';
 
